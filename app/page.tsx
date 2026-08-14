@@ -27,24 +27,38 @@ export default function Home() {
         </div>
       </header>
 
-      {/* --- HERO SECTION --- */}
-      <section className="max-w-6xl mx-auto px-6 py-24 md:py-32 flex flex-col items-start justify-center">
-        <span className="text-slate-400 font-mono text-xs tracking-widest uppercase mb-4 bg-slate-900 px-3 py-1.5 rounded border border-slate-800">
-          Arquitectura Modular de Vanguardia
-        </span>
-        <h1 className="text-4xl md:text-6xl font-extralight tracking-tight max-w-3xl leading-tight mb-6 text-neutral-100">
-          Espacios industriales, sustentables y de <span className="font-bold text-slate-400">diseño minimalista.</span>
-        </h1>
-        <p className="text-neutral-400 text-lg max-w-xl mb-10 leading-relaxed font-light">
-          Construimos tu hogar o proyecto comercial con un sistema rápido, eficiente y de calidad superior.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-          <a href="#tipologias" className="bg-slate-200 text-neutral-950 px-8 py-4 font-medium text-xs tracking-widest uppercase text-center hover:bg-white transition">
-            Ver Modelos
-          </a>
-          <a href="#contacto" className="border border-neutral-800 hover:border-slate-600 text-neutral-300 px-8 py-4 font-medium text-xs tracking-widest uppercase text-center transition">
-            Contactar Asesor
-          </a>
+      {/* --- HERO SECTION CON FOTO DE FONDO --- */}
+      <section className="relative max-w-6xl mx-auto px-6 py-32 md:py-44 flex flex-col items-start justify-center overflow-hidden my-6 border border-neutral-800">
+        {/* Imagen de fondo del Hero */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/foto.hero.png" 
+            alt="AC Constructora - Arquitectura Modular" 
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Overlay oscuro para que el texto resalte a la perfección */}
+          <div className="absolute inset-0 bg-neutral-950/80 backdrop-blur-[2px]"></div>
+        </div>
+
+        {/* Contenido de texto superpuesto */}
+        <div className="relative z-10 max-w-3xl">
+          <span className="text-slate-400 font-mono text-xs tracking-widest uppercase mb-4 inline-block bg-neutral-900/90 px-3 py-1.5 rounded border border-slate-800">
+            Arquitectura Modular de Vanguardia
+          </span>
+          <h1 className="text-4xl md:text-6xl font-extralight tracking-tight leading-tight mb-6 text-neutral-100">
+            Espacios industriales, sustentables y de <span className="font-bold text-slate-400">diseño minimalista.</span>
+          </h1>
+          <p className="text-neutral-300 text-lg max-w-xl mb-10 leading-relaxed font-light">
+            Construimos tu hogar o proyecto comercial con un sistema rápido, eficiente y de calidad superior.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+            <a href="#tipologias" className="bg-slate-200 text-neutral-950 px-8 py-4 font-medium text-xs tracking-widest uppercase text-center hover:bg-white transition shadow-lg">
+              Ver Modelos
+            </a>
+            <a href="#contacto" className="border border-neutral-700 hover:border-slate-400 text-neutral-200 bg-neutral-950/50 backdrop-blur px-8 py-4 font-medium text-xs tracking-widest uppercase text-center transition">
+              Contactar Asesor
+            </a>
+          </div>
         </div>
       </section>
 

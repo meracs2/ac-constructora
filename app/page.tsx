@@ -165,7 +165,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- TIPOLOGÍAS (3 TARJETAS MODALES) --- */}
+      {/* --- TIPOLOGÍAS --- */}
       <section id="tipologias" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
         <h2 className="text-3xl font-light tracking-wide mb-2">Nuestras Tipologías</h2>
         <p className="text-neutral-400 mb-12 max-w-xl font-light">Hacé clic en cualquier modelo para ver su información técnica y detalles.</p>
@@ -203,10 +203,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- MODAL DE DETALLES --- */}
+      {/* --- MODAL ADAPTADO A MÓVIL --- */}
       {selectedModel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/85 backdrop-blur-md overflow-y-auto">
-          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full p-6 md:p-8 relative shadow-2xl my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/85 backdrop-blur-md">
+          <div className="bg-neutral-900 border border-neutral-800 max-w-lg w-full max-h-[85vh] p-6 relative shadow-2xl overflow-y-auto">
             <button 
               onClick={() => setSelectedModel(null)}
               className="absolute top-4 right-4 text-neutral-400 hover:text-white text-xl font-mono p-2 z-10"
@@ -214,28 +214,28 @@ export default function Home() {
               [✕]
             </button>
 
-            <div className="mb-6 pr-8 border-b border-neutral-800 pb-4">
+            <div className="mb-5 pr-8 border-b border-neutral-800 pb-4">
               <span className="text-slate-400 font-mono text-xs tracking-widest uppercase mb-1 inline-block">
                 {selectedModel.dimensions} • {selectedModel.size}m²
               </span>
-              <h2 className="text-2xl font-light text-neutral-100">{selectedModel.name}</h2>
-              <div className="mt-3 flex items-baseline gap-4">
-                <span className="text-2xl font-normal text-slate-200">{selectedModel.price}</span>
+              <h2 className="text-xl font-light text-neutral-100">{selectedModel.name}</h2>
+              <div className="mt-2 flex items-baseline gap-3">
+                <span className="text-xl font-normal text-slate-200">{selectedModel.price}</span>
                 <span className="text-xs text-neutral-500 line-through">{selectedModel.oldPrice}</span>
                 <span className="text-xs tracking-widest uppercase text-slate-400 font-mono ml-auto">{selectedModel.condition}</span>
               </div>
             </div>
 
-            <p className="text-neutral-300 text-sm leading-relaxed mb-6 font-light">
+            <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed mb-5 font-light">
               {selectedModel.description}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-1 gap-5 mb-6">
               <div>
-                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3 border-b border-neutral-800 pb-2">
+                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2 border-b border-neutral-800 pb-1.5">
                   Incluye:
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {selectedModel.includes.map((item, idx) => (
                     <li key={idx} className="text-xs text-neutral-300 flex items-start gap-2 font-light">
                       <span className="text-slate-500 font-mono">✓</span> {item}
@@ -245,10 +245,10 @@ export default function Home() {
               </div>
               
               <div>
-                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-3 border-b border-neutral-800 pb-2">
+                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2 border-b border-neutral-800 pb-1.5">
                   Ventajas:
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-1.5">
                   {selectedModel.features.map((feature, idx) => (
                     <li key={idx} className="text-xs text-neutral-300 flex items-start gap-2 font-light">
                       <span className="text-slate-500 font-mono">+</span> {feature}
@@ -272,13 +272,40 @@ export default function Home() {
       {/* --- PROYECTOS --- */}
       <section id="proyectos" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
         <h2 className="text-3xl font-light tracking-wide mb-2">Proyectos Realizados</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Mirá algunas de nuestras obras entregadas y en proceso.</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="h-72 bg-neutral-900/40 border border-neutral-800/80 flex items-center justify-center text-neutral-600 font-mono text-sm tracking-wider">
-            [ Proyecto Destacado 1 ]
+        <p className="text-neutral-400 mb-12 max-w-xl font-light">Mirá algunas de nuestras obras entregadas y en proceso en video.</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          <div className="bg-neutral-900/40 border border-neutral-800/80 p-4 flex flex-col items-center justify-center min-h-[400px]">
+            <div className="w-full flex justify-center overflow-hidden">
+              <iframe 
+                src="https://www.instagram.com/p/TU_URL_DE_INSTAGRAM_AQUÍ/embed" 
+                className="w-full max-w-[320px] h-[480px] border-0" 
+                scrolling="no" 
+                allowTransparency={true}
+              ></iframe>
+            </div>
+            <span className="text-xs font-mono text-neutral-500 mt-4 uppercase tracking-wider">Recorrido de Obra • Instagram</span>
           </div>
-          <div className="h-72 bg-neutral-900/40 border border-neutral-800/80 flex items-center justify-center text-neutral-600 font-mono text-sm tracking-wider">
-            [ Proyecto Destacado 2 ]
+
+          <div className="bg-neutral-900/40 border border-neutral-800/80 p-8 flex flex-col justify-between h-full min-h-[400px]">
+            <div>
+              <span className="text-xs font-mono text-slate-400 bg-neutral-950 px-2.5 py-1 border border-neutral-800 uppercase tracking-widest">
+                Proceso & Calidad
+              </span>
+              <h3 className="text-2xl font-light text-neutral-100 mt-4 mb-4">Seguinos en redes para ver más entregas</h3>
+              <p className="text-neutral-400 text-sm font-light leading-relaxed mb-6">
+                Compartimos el paso a paso de cada montaje, detalles de terminaciones y la experiencia de nuestros clientes al recibir su módulo llave en mano.
+              </p>
+            </div>
+
+            <a 
+              href="https://instagram.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="border border-neutral-400 hover:border-white text-neutral-100 bg-neutral-950 px-6 py-3 font-medium text-xs tracking-widest uppercase text-center transition block"
+            >
+              Ver perfil de Instagram &rarr;
+            </a>
           </div>
         </div>
       </section>

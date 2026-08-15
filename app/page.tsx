@@ -68,7 +68,7 @@ const modelsData: ModelDetail[] = [
     price: "Cotización personalizada",
     oldPrice: "",
     condition: "Llave en mano",
-    description: "Sistema industrializado avanzado con estructura metálica y paneles de aislamiento térmico de alta densidad. Montaje rápido y eficiente en destino.",
+    description: "Sistema constructivo avanzado con estructura metálica y paneles de aislamiento térmico de alta densidad. Montaje rápido y eficiente en destino.",
     includes: [
       "Estructura sismorresistente",
       "Baño completo y cocina equipada",
@@ -82,11 +82,10 @@ const modelsData: ModelDetail[] = [
       "Ampliaciones futuras disponibles",
       "Apto crédito y mudables"
     ],
-    image: "/contenedor-1.jpg",
+    image: "/contenedor-1.png",
     gallery: [
-      "/contenedor-1.jpg",
-      "/contenedor-2.jpg",
-      "/contenedor-3.jpg"
+      "/contenedor-1.png",
+      "/contenedor-2.png"
     ]
   },
   {
@@ -202,6 +201,18 @@ export default function Home() {
   const [activeModalImage, setActiveModalImage] = useState<string>('');
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
+  // Estados para el formulario de contacto con WhatsApp
+  const [nombre, setNombre] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [mensaje, setMensaje] = useState('');
+
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const texto = `Hola, mi nombre es ${nombre}. Mi teléfono es ${telefono}. Mensaje: ${mensaje}`;
+    const url = `https://wa.me/5493517601722?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+  };
+
   const handleOpenModal = (model: ModelDetail) => {
     setSelectedModel(model);
     setActiveModalImage(model.image);
@@ -226,24 +237,24 @@ export default function Home() {
   const faqData = {
     construccion: [
       {
-        pregunta: "¿Cuánto demora la fabricación y entrega de una casa modular?",
+        pregunta: "¿Cuánto demora la fabricación y entrega de una vivienda?",
         respuesta: "Los plazos varían según la tipología y complejidad, pero oscilan entre 45 y 60 días desde la aprobación del proyecto ejecutivo y la firma del contrato."
       },
       {
-        pregunta: "¿Es posible ampliar una vivienda modular AC a futuro?",
-        respuesta: "¡Sí! El sistema modular permite acoplar nuevos módulos habitacionales de forma rápida y sencilla, adaptando la vivienda a las nuevas necesidades de tu familia."
+        pregunta: "¿Es posible ampliar la vivienda a futuro?",
+        respuesta: "¡Sí! El sistema constructivo permite incorporar nuevos espacios habitacionales de forma rápida y sencilla, adaptando la propiedad a las nuevas necesidades."
       },
       {
-        pregunta: "¿Qué tipo de fundaciones necesitan las construcciones modulares?",
+        pregunta: "¿Qué tipo de fundaciones necesitan estas construcciones?",
         respuesta: "Generalmente se utilizan pilotes de hormigón o plateas, dependiendo de las características del suelo y el modelo elegido. Realizamos un estudio previo en cada terreno."
       },
       {
-        pregunta: "¿Las construcciones modulares son aptas para cualquier clima?",
+        pregunta: "¿Las construcciones son aptas para cualquier clima?",
         respuesta: "Absolutamente. Gracias a nuestros paneles de aislamiento térmico de alta densidad, garantizan un excelente confort interior tanto en climas fríos como calurosos."
       },
       {
-        pregunta: "¿Se pueden trasladar las casas modulares a otro terreno?",
-        respuesta: "Sí, es una de las grandes ventajas. Si bien implica un costo de logística y montaje, la estructura metálica permite desarmar y reubicar la vivienda en una nueva ubicación."
+        pregunta: "¿Se pueden trasladar las estructuras a otro terreno?",
+        respuesta: "Sí, es una de las grandes ventajas. Si bien implica un costo de logística y montaje, la estructura permite desarmar y reubicar la propiedad en una nueva ubicación."
       }
     ],
     diseno: [
@@ -270,7 +281,7 @@ export default function Home() {
     ],
     sistema: [
       {
-        pregunta: "¿En qué consiste exactamente el sistema constructivo industrializado?",
+        pregunta: "¿En qué consiste exactamente el sistema constructivo avanzado?",
         respuesta: "Se basa en la prefabricación de componentes estructurales de alta precisión en taller, minimizando los tiempos de obra en el terreno y reduciendo el margen de error humano."
       },
       {
@@ -333,10 +344,10 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl w-full mx-auto px-6 h-full flex flex-col justify-between py-12">
           <div className="self-end text-right max-w-xl">
             <span className="text-slate-300 font-mono text-xs tracking-widest uppercase mb-3 inline-block bg-neutral-950/80 px-3 py-1.5 border border-neutral-700 shadow-lg">
-              Desarrollo, Diseño y Viviendas Modulares
+              Arquitectura, Proyectos y Construcción Eficiente
             </span>
             <h1 className="text-3xl md:text-5xl font-extralight tracking-tight leading-tight text-neutral-100">
-              Espacios industriales, sustentables y de <span className="font-bold text-slate-300">diseño minimalista.</span>
+              Espacios de vanguardia, confort superior y <span className="font-bold text-slate-300">diseño exclusivo.</span>
             </h1>
           </div>
 
@@ -359,19 +370,19 @@ export default function Home() {
       {/* --- 1. PROYECTO DESTACADO --- */}
       <section id="proyectos" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
         <span className="text-xs font-mono text-slate-400 bg-neutral-950 px-2.5 py-1 border border-neutral-800 uppercase tracking-widest mb-3 inline-block">
-          Casas Modulares
+          Viviendas Flexibles
         </span>
         <h2 className="text-3xl font-light tracking-wide mb-2">Proyecto Destacado</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Innovación en arquitectura industrializada y montaje rápido en destino.</p>
+        <p className="text-neutral-400 mb-12 max-w-xl font-light">Innovación en arquitectura avanzada y montaje rápido en destino.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-neutral-900/40 border border-neutral-800/80 p-6 md:p-8">
           <div 
-            onClick={() => setZoomedImage("/contenedor-1.jpg")}
+            onClick={() => setZoomedImage("/edificio.jpg")}
             className="overflow-hidden border border-neutral-800 relative h-[350px] cursor-pointer group"
             title="Hacer clic para ampliar imagen"
           >
             <img 
-              src="/contenedor-1.jpg" 
+              src="/edificio.jpg" 
               alt="Casas Modulares AC Constructora" 
               className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
             />
@@ -381,9 +392,9 @@ export default function Home() {
           </div>
           <div>
             <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">Sistema Habitacional Avanzado</span>
-            <h3 className="text-2xl font-light mb-4 text-neutral-100">Desarrollo de Viviendas Modulares Eficientes</h3>
+            <h3 className="text-2xl font-light mb-4 text-neutral-100">Desarrollo de Viviendas Eficientes</h3>
             <p className="text-neutral-300 text-sm font-light leading-relaxed mb-6">
-              Nuestras casas modulares combinan estructura metálica de alta resistencia con paneles de aislamiento térmico de última generación. Diseñadas para garantizar durabilidad, confort absoluto y eficiencia energética en cualquier tipo de terreno.
+              Nuestras construcciones combinan estructura metálica de alta resistencia con paneles de aislamiento térmico de última generación. Diseñadas para garantizar durabilidad, confort absoluto y eficiencia energética en cualquier tipo de terreno.
             </p>
             <ul className="space-y-2 mb-8">
               <li className="text-xs text-neutral-300 flex items-center gap-2 font-light"><span className="text-slate-500 font-mono">✓</span> Estructura sismorresistente certificada</li>
@@ -746,7 +757,7 @@ export default function Home() {
       {/* --- SISTEMA --- */}
       <section id="sistema" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
         <h2 className="text-3xl font-light tracking-wide mb-2">El Sistema Constructivo</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Por qué elegir construcción modular y industrializada de vanguardia.</p>
+        <p className="text-neutral-400 mb-12 max-w-xl font-light">Por qué elegir construcción de vanguardia y máxima eficiencia.</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="p-6 bg-neutral-900/30 border border-neutral-800/80">
             <h3 className="font-normal text-slate-300 mb-2 tracking-wide">Velocidad de obra</h3>
@@ -757,8 +768,8 @@ export default function Home() {
             <p className="text-sm text-neutral-400 font-light">Paneles de alta densidad que garantizan confort térmico todo el año.</p>
           </div>
           <div className="p-6 bg-neutral-900/30 border border-neutral-800/80">
-            <h3 className="font-normal text-slate-300 mb-2 tracking-wide">Sustentabilidad</h3>
-            <p className="text-sm text-neutral-400 font-light">Reutilización de estructuras metálicas de gran resistencia y durabilidad.</p>
+            <h3 className="font-normal text-slate-300 mb-2 tracking-wide">Eficiencia y Solidez</h3>
+            <p className="text-sm text-neutral-400 font-light">Estructuras metálicas optimizadas de gran resistencia y durabilidad.</p>
           </div>
         </div>
       </section>
@@ -777,7 +788,7 @@ export default function Home() {
                 : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200'
             }`}
           >
-            Construcción (Módulos y Edificios)
+            Construcción (Viviendas y Edificios)
           </button>
           <button
             onClick={() => setActiveFaqTab('diseno')}
@@ -839,31 +850,62 @@ export default function Home() {
       <section id="contacto" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
         <div className="max-w-xl bg-neutral-900/40 border border-neutral-800 p-8">
           <h2 className="text-3xl font-light tracking-wide mb-2">Contacto</h2>
-          <p className="text-neutral-400 mb-8 text-sm font-light">Dejanos tu mensaje y nos ponemos en contacto con vos para cotizar tu proyecto.</p>
+          <p className="text-neutral-400 mb-8 text-sm font-light">Dejanos tu mensaje y nos ponemos en contacto con vos por WhatsApp para cotizar tu proyecto.</p>
           
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+          <form onSubmit={handleWhatsAppSubmit} className="space-y-4">
             <div>
               <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Nombre</label>
-              <input type="text" className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" placeholder="Tu nombre" />
+              <input 
+                type="text" 
+                required
+                value={nombre}
+                onChange={(e) => setNombre(e.target.value)}
+                className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" 
+                placeholder="Tu nombre" 
+              />
             </div>
             <div>
               <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Teléfono / WhatsApp</label>
-              <input type="text" className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" placeholder="Ej: 351..." />
+              <input 
+                type="text" 
+                required
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+                className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" 
+                placeholder="Ej: 351..." 
+              />
             </div>
             <div>
               <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Mensaje</label>
-              <textarea rows={4} className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" placeholder="Contanos si te interesa un departamento, un módulo o diseño de interiores..." />
+              <textarea 
+                rows={4} 
+                required
+                value={mensaje}
+                onChange={(e) => setMensaje(e.target.value)}
+                className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" 
+                placeholder="Contanos si te interesa un departamento, un proyecto o diseño de interiores..." 
+              />
             </div>
-            <button type="submit" className="w-full bg-slate-200 hover:bg-white text-neutral-950 font-medium py-3 text-xs tracking-widest uppercase transition">
-              Enviar Mensaje
+            <button type="submit" className="w-full bg-slate-200 hover:bg-white text-neutral-950 font-medium py-3 text-xs tracking-widest uppercase transition flex items-center justify-center gap-2">
+              Enviar por WhatsApp &rarr;
             </button>
           </form>
         </div>
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="border-t border-neutral-900 py-8 text-center text-xs text-neutral-500 font-light">
+      <footer className="border-t border-neutral-900 py-8 text-center text-xs text-neutral-500 font-light space-y-3">
         <p>© {new Date().getFullYear()} AC Constructora. Todos los derechos reservados.</p>
+        <div>
+          <a 
+            href="https://www.instagram.com/ac.constructora.ar/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-slate-400 hover:text-white transition-colors uppercase tracking-widest font-mono inline-flex items-center gap-1.5"
+          >
+            Instagram: @ac.constructora.ar &rarr;
+          </a>
+        </div>
       </footer>
     </div>
   );

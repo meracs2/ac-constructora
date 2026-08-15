@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 interface ModelDetail {
   id: number;
@@ -193,6 +192,37 @@ const professionalServicesData: ProfessionalService[] = [
   }
 ];
 
+const featuredSlides = [
+  {
+    image: "/edificio.jpg",
+    tag: "Desarrollo Urbano",
+    title: "Edificio de Departamentos Exclusivos",
+    description: "Unidades modernas de 1 y 2 dormitorios con excelente iluminación natural, terminaciones de categoría y ubicaciones estratégicas para máxima valorización.",
+    specs: ["Balcones con vista", "Cocheras", "Terminaciones DVH"]
+  },
+  {
+    image: "/contenedor-1.png",
+    tag: "Casas Modulares - Vista Frontal",
+    title: "Sistema Habitacional Avanzado",
+    description: "Módulos acoplables de diseño moderno con estructura metálica y paneles de alta aislación térmica listos para habitar en destino.",
+    specs: ["Montaje rápido", "Sismorresistente", "Apto crédito"]
+  },
+  {
+    image: "/contenedor-2.png",
+    tag: "Casas Modulares - Vista Interior / Módulos",
+    title: "Confort y Terminaciones de Calidad",
+    description: "Interiores optimizados con instalaciones completas de luz y agua, aberturas de aluminio y pisos vinílicos de alta resistencia.",
+    specs: ["Baño completo", "Cocina equipada", "Pisos SPC"]
+  },
+  {
+    image: "/exterior.jpg",
+    tag: "Diseño y Paisajismo",
+    title: "Exteriores, Galerías y Jardines",
+    description: "Paisajismo integral, diseño de galerías, quinchos y espacios verdes conectados de forma fluida con la arquitectura del hogar.",
+    specs: ["Riegos automáticos", "Pérgolas y decks", "Iluminación exterior"]
+  }
+];
+
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<ModelDetail | null>(null);
   const [selectedService, setSelectedService] = useState<ProfessionalService | null>(null);
@@ -201,10 +231,21 @@ export default function Home() {
   const [activeModalImage, setActiveModalImage] = useState<string>('');
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
+  // Estados para el slider del proyecto destacado
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   // Estados para el formulario de contacto con WhatsApp
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [mensaje, setMensaje] = useState('');
+
+  // Rotación automática cada 7 segundos
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % featuredSlides.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
 
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -367,44 +408,69 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- 1. PROYECTO DESTACADO --- */}
+      {/* --- 1. PROYECTO DESTACADO CON SLIDER AUTOMÁTICO PURO (SIN ETIQUETAS DE NÚMEROS) --- */}
       <section id="proyectos" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
         <span className="text-xs font-mono text-slate-400 bg-neutral-950 px-2.5 py-1 border border-neutral-800 uppercase tracking-widest mb-3 inline-block">
-          Viviendas Flexibles
+          Galería Interactiva
         </span>
-        <h2 className="text-3xl font-light tracking-wide mb-2">Proyecto Destacado</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Innovación en arquitectura avanzada y montaje rápido en destino.</p>
+        <h2 className="text-3xl font-light tracking-wide mb-2">Proyecto Destacado en Detalle</h2>
+        <p className="text-neutral-400 mb-12 max-w-xl font-light">Explora las distintas propuestas y visualiza sus descripciones actualizadas en tiempo real.</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-neutral-900/40 border border-neutral-800/80 p-6 md:p-8">
-          <div 
-            onClick={() => setZoomedImage("/edificio.jpg")}
-            className="overflow-hidden border border-neutral-800 relative h-[350px] cursor-pointer group"
-            title="Hacer clic para ampliar imagen"
-          >
-            <img 
-              src="/edificio.jpg" 
-              alt="Casas Modulares AC Constructora" 
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-            />
-            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="bg-neutral-950/80 text-white text-xs font-mono px-3 py-1.5 border border-neutral-700">🔍 Ampliar imagen</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-neutral-900/40 border border-neutral-800/80 p-6 md:p-8 relative">
+          
+          {/* Contenedor de la Imagen con Slider Automático Suave (Fade Transition) */}
+          <div className="overflow-hidden border border-neutral-800 relative h-[340px] select-none bg-neutral-950">
+            {featuredSlides.map((slide, idx) => (
+              <img 
+                key={idx}
+                src={slide.image} 
+                alt={slide.title} 
+                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+                  currentSlide === idx 
+                    ? 'opacity-100 scale-100 z-10' 
+                    : 'opacity-0 scale-105 pointer-events-none z-0'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Panel de descripciones dinámicas con transición suave */}
+          <div className="flex flex-col justify-between h-full">
+            <div>
+              <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">
+                {featuredSlides[currentSlide].tag}
+              </span>
+              <h3 className="text-2xl font-light mb-4 text-neutral-100">{featuredSlides[currentSlide].title}</h3>
+              <p className="text-neutral-300 text-sm font-light leading-relaxed mb-6">
+                {featuredSlides[currentSlide].description}
+              </p>
+              <ul className="space-y-2 mb-8">
+                {featuredSlides[currentSlide].specs.map((spec, sIdx) => (
+                  <li key={sIdx} className="text-xs text-neutral-300 flex items-center gap-2 font-light">
+                    <span className="text-slate-500 font-mono">✓</span> {spec}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Puntitos indicadores automáticos limpios */}
+            <div className="flex items-center gap-2 pt-4 border-t border-neutral-800/80">
+              {featuredSlides.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-2 transition-all duration-500 ${
+                    currentSlide === idx 
+                      ? 'w-8 bg-slate-200' 
+                      : 'w-2 bg-neutral-700'
+                  }`}
+                />
+              ))}
+              <a href="#contacto" className="ml-auto inline-block bg-slate-200 hover:bg-white text-neutral-950 font-medium px-5 py-2 text-xs tracking-widest uppercase transition">
+                Consultar
+              </a>
             </div>
           </div>
-          <div>
-            <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">Sistema Habitacional Avanzado</span>
-            <h3 className="text-2xl font-light mb-4 text-neutral-100">Desarrollo de Viviendas Eficientes</h3>
-            <p className="text-neutral-300 text-sm font-light leading-relaxed mb-6">
-              Nuestras construcciones combinan estructura metálica de alta resistencia con paneles de aislamiento térmico de última generación. Diseñadas para garantizar durabilidad, confort absoluto y eficiencia energética en cualquier tipo de terreno.
-            </p>
-            <ul className="space-y-2 mb-8">
-              <li className="text-xs text-neutral-300 flex items-center gap-2 font-light"><span className="text-slate-500 font-mono">✓</span> Estructura sismorresistente certificada</li>
-              <li className="text-xs text-neutral-300 flex items-center gap-2 font-light"><span className="text-slate-500 font-mono">✓</span> Instalaciones embutidas de primera calidad</li>
-              <li className="text-xs text-neutral-300 flex items-center gap-2 font-light"><span className="text-slate-500 font-mono">✓</span> Terminaciones listas para habitar en menor tiempo</li>
-            </ul>
-            <a href="#contacto" className="inline-block bg-slate-200 hover:bg-white text-neutral-950 font-medium px-6 py-3 text-xs tracking-widest uppercase transition">
-              Consultar por este Proyecto
-            </a>
-          </div>
+
         </div>
       </section>
 

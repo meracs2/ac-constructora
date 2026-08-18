@@ -303,8 +303,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#f7f5f0] text-[#171717] font-sans selection:bg-[#cfc5b5] selection:text-[#171717]">
-      {/* --- NAVBAR Minimalista --- */}
-      <header className="sticky top-0 z-50 bg-[#f7f5f0]/90 backdrop-blur-md border-b border-[#171717]/15">
+      {/* --- NAVBAR --- */}
+      <header className="sticky top-0 z-50 bg-[#f4f1ea]/90 backdrop-blur-md border-b border-[#171717]/10">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <a href="#" className="font-bold tracking-[0.24em] text-xl uppercase">
             AC <small className="block text-[8px] font-normal tracking-[0.28em] -mt-1 text-[#6e6a63]">ESTUDIO</small>
@@ -328,50 +328,59 @@ export default function Home() {
         </div>
       </header>
 
-      {/* --- HERO SECTION Editorial --- */}
-      <section className="relative min-h-[calc(100vh-80px)] max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] mb-6 block font-medium">
-              Diseño • Arquitectura • Desarrollos • Interior & Exterior
-            </span>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight mb-8 text-[#171717]">
-              Espacios<br /><em className="font-serif italic font-normal">con intención.</em>
-            </h1>
-            <p className="text-lg md:text-xl text-[#555149] leading-relaxed max-w-xl font-light mb-8">
-              AC crea proyectos integrales donde arquitectura, inversión y diseño se encuentran. Desde el terreno hasta el último detalle.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#desarrollos" className="bg-[#171717] text-[#fcfbf8] px-7 py-4 text-[10px] font-semibold tracking-[0.15em] uppercase text-center hover:bg-[#2c2b29] transition shadow-md">
-                Descubrir AC
-              </a>
-              <a href="#contacto" className="border border-[#171717]/30 hover:border-[#171717] text-[#171717] bg-transparent px-7 py-4 text-[10px] font-semibold tracking-[0.15em] uppercase text-center transition">
-                Consultar
-              </a>
+      {/* --- HERO SECTION --- */}
+      <section className="bg-[#f4f1ea] border-b border-[#171717]/10">
+        <div className="max-w-7xl mx-auto px-6 py-16 md:py-24 min-h-[calc(100vh-80px)] flex flex-col justify-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div className="lg:col-span-7 pr-0 lg:pr-6">
+              <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] mb-6 block font-semibold">
+                Desarrollos • Arquitectura • Diseño interior & exterior
+              </span>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight mb-8 text-[#171717]">
+                Espacios<br /><em className="font-serif italic font-normal text-[#2c2b29]">con intención.</em>
+              </h1>
+              <p className="text-lg md:text-xl text-[#555149] leading-relaxed max-w-xl font-light mb-10">
+                AC crea proyectos integrales donde arquitectura, inversión y diseño se encuentran. Desde el terreno hasta el último detalle.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a href="#desarrollos" className="bg-[#171717] text-[#fcfbf8] px-8 py-4 text-[10px] font-semibold tracking-[0.18em] uppercase text-center hover:bg-[#2c2b29] transition shadow-sm">
+                  Descubrir AC
+                </a>
+                <a href="#contacto" className="border border-[#171717]/20 hover:border-[#171717] hover:bg-[#e2ded5]/40 text-[#171717] bg-transparent px-8 py-4 text-[10px] font-semibold tracking-[0.18em] uppercase text-center transition">
+                  Consultar
+                </a>
+              </div>
             </div>
-          </div>
 
-          <div 
-            onClick={() => setZoomedImage("/edificio.jpg")}
-            className="h-[420px] md:h-[580px] bg-[#eee9df] border border-[#171717]/15 relative overflow-hidden group cursor-pointer shadow-lg"
-            title="Ampliar imagen"
-          >
-            <img 
-              src="/edificio.jpg" 
-              alt="AC Estudio - Arquitectura y Desarrollos" 
-              className="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90"
-            />
-            <div className="absolute top-4 right-4 bg-[#f7f5f0]/80 backdrop-blur-sm px-3 py-1 border border-[#171717]/15 text-[9px] font-mono tracking-widest text-[#171717]">
-              AC / 01
+            <div className="lg:col-span-5">
+              <div 
+                onClick={() => setZoomedImage("/edificio.jpg")}
+                className="h-[440px] md:h-[560px] bg-[#e2ded5] border border-[#171717]/15 relative overflow-hidden group cursor-pointer shadow-md rounded-none"
+                title="Ampliar imagen"
+              >
+                <img 
+                  src="/edificio.jpg" 
+                  alt="AC Estudio - Arquitectura y Desarrollos" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-95"
+                />
+                <div className="absolute top-4 right-4 bg-[#f4f1ea]/90 backdrop-blur-sm px-3 py-1 border border-[#171717]/10 text-[9px] font-mono tracking-widest text-[#171717]">
+                  AC / 01
+                </div>
+                <div className="absolute bottom-4 left-4 bg-[#171717]/90 text-[#fcfbf8] backdrop-blur-sm px-3 py-1.5 text-[9px] font-mono tracking-widest uppercase">
+                  Arquitectura Integral
+                </div>
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="bg-[#171717] text-[#fcfbf8] text-[10px] tracking-widest uppercase font-mono px-3 py-1.5">🔍 Ampliar Vista</span>
+                </div>
+              </div>
             </div>
-            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <span className="bg-[#171717] text-[#fcfbf8] text-[10px] tracking-widest uppercase font-mono px-3 py-1.5">🔍 Ampliar Vista</span>
-            </div>
+
           </div>
         </div>
       </section>
 
-      {/* --- SERVICIOS / LO QUE HACEMOS --- */}
+      {/* --- SERVICIOS --- */}
       <section id="servicios" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
           <div className="lg:col-span-5">
@@ -389,8 +398,8 @@ export default function Home() {
           <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
             <div className="text-[10px] font-mono tracking-widest text-[#6e6a63]">01</div>
             <div>
-              <h3 className="text-xl font-normal mb-2">Diseño</h3>
-              <p className="text-xs text-[#6e6a63] leading-relaxed">Concepto, materialidad, identidad y soluciones pensadas exclusivamente para cada proyecto.</p>
+              <h3 className="text-xl font-normal mb-2">Desarrollos</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Analizamos terrenos y estructuramos oportunidades inmobiliarias bajo esquema de aporte.</p>
             </div>
           </article>
           <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
@@ -403,21 +412,21 @@ export default function Home() {
           <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
             <div className="text-[10px] font-mono tracking-widest text-[#6e6a63]">03</div>
             <div>
-              <h3 className="text-xl font-normal mb-2">Desarrollos</h3>
-              <p className="text-xs text-[#6e6a63] leading-relaxed">Analizamos terrenos y estructuramos oportunidades inmobiliarias bajo esquema de aporte.</p>
+              <h3 className="text-xl font-normal mb-2">Diseño Interior & Exterior</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Diseñamos el espacio completo: interiores, patios, terrazas, paisajismo y mobiliario a medida.</p>
             </div>
           </article>
           <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
             <div className="text-[10px] font-mono tracking-widest text-[#6e6a63]">04</div>
             <div>
-              <h3 className="text-xl font-normal mb-2">Interior & Exterior</h3>
-              <p className="text-xs text-[#6e6a63] leading-relaxed">Diseñamos el espacio completo: interiores, patios, terrazas, paisajismo y mobiliario a medida.</p>
+              <h3 className="text-xl font-normal mb-2">Soluciones Modulares</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Sistemas constructivos eficientes, versátiles y de rápido montaje en destino.</p>
             </div>
           </article>
         </div>
       </section>
 
-      {/* --- DESARROLLO / APORTE DE TIERRA (Dark Section) --- */}
+      {/* --- DESARROLLO / APORTE DE TIERRA --- */}
       <section id="desarrollos" className="bg-[#1b1b1a] text-[#f7f5f0] py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -453,7 +462,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- PROPUESTA APORTE DE TIERRA & PASOS --- */}
+      {/* --- PROPUESTA APORTE DE TIERRA --- */}
       <section className="bg-[#e9e3d8] py-24 border-t border-[#171717]/15">
         <div className="max-w-7xl mx-auto px-6">
           <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Aporte de tierra</span>
@@ -496,7 +505,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- TARJETAS INTERACTIVAS (Propuestas y Modelos) --- */}
+      {/* --- PROYECTOS --- */}
       <section id="proyectos" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
         <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Catálogo de Soluciones</span>
         <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4">Unidades y Soluciones AC</h2>
@@ -553,7 +562,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- SECCIÓN DISEÑO INTERIOR & EXTERIOR --- */}
+      {/* --- SECCIÓN INTERIOR & EXTERIOR --- */}
       <section className="bg-[#eee9df] py-24 border-t border-[#171717]/15">
         <div className="max-w-7xl mx-auto px-6">
           <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Interior & Exterior</span>
@@ -616,7 +625,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- AC MODULAR / SISTEMA --- */}
+      {/* --- SISTEMA MODULAR --- */}
       <section id="sistema" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
         <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">AC Modular</span>
         <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4">Viviendas que se adaptan.</h2>
@@ -640,7 +649,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- PREGUNTAS FRECUENTES (FAQ) --- */}
+      {/* --- FAQ --- */}
       <section id="faq" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
         <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Dudas frecuentes</span>
         <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4">Preguntas Frecuentes</h2>
@@ -689,7 +698,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- SECCIÓN CONTACTO Editorial --- */}
+      {/* --- CONTACTO --- */}
       <section id="contacto" className="bg-[#d8d0c4] py-24 border-t border-[#171717]/15">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -751,8 +760,26 @@ export default function Home() {
       {/* --- FOOTER --- */}
       <footer className="border-t border-[#171717]/15 py-8 bg-[#f7f5f0]">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] tracking-[0.15em] uppercase text-[#6e6a63]">
-          <span>AC ESTUDIO</span>
-          <span>Diseño · Arquitectura · Desarrollos · Interior & Exterior</span>
+          <span className="font-bold text-[#171717]">
+            <a 
+              href="https://marcelomoyano.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:underline text-[#171717]"
+            >
+              AMsolutions
+            </a>
+            {' - '}
+            <a 
+              href="https://www.instagram.com/ac.constructora.ar/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:underline text-[#171717]"
+            >
+              AC ESTUDIO
+            </a>
+          </span>
+          <span>Desarrollos · Arquitectura · Diseño Interior & Exterior</span>
           <span>© {new Date().getFullYear()}</span>
         </div>
       </footer>
@@ -832,7 +859,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* --- LIGHTBOX (Zoom de imágenes) --- */}
+      {/* --- LIGHTBOX --- */}
       {zoomedImage && (
         <div 
           onClick={() => setZoomedImage(null)}

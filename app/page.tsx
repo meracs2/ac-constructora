@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 interface ModelDetail {
   id: number;
@@ -36,23 +36,23 @@ const modelsData: ModelDetail[] = [
     id: 1,
     name: "Edificio de Departamentos",
     size: "Múltiples",
-    dimensions: "Unidades de 1 y 2 dormitorios",
+    dimensions: "Planta baja y 3 pisos",
     price: "Consultar",
     oldPrice: "",
-    condition: "Pozo / Llave en mano",
-    description: "Desarrollo edilicio exclusivo pensado para la vida urbana moderna, con excelente iluminación natural, terminaciones de categoría y ubicaciones estratégicas.",
+    condition: "Aporte de Tierra / Desarrollos",
+    description: "La propuesta contempla que el propietario reciba unidades terminadas como contraprestación, mientras AC estructura el proyecto y la ejecución.",
     includes: [
-      "Balcones con excelente vista",
-      "Cocheras y espacios comunes",
-      "Terminaciones de categoría",
-      "Aberturas de aluminio DVH",
-      "Instalaciones completas"
+      "Planta baja con cocheras cubiertas",
+      "3 pisos de unidades residenciales",
+      "Balcones con vista panorámica",
+      "Diseño arquitectónico moderno",
+      "Instalaciones completas y previsión de servicios"
     ],
     features: [
-      "Diseño de vanguardia",
-      "Ubicaciones privilegiadas",
-      "Alta rentabilidad y valorización",
-      "Espacios comunes equipados"
+      "Transformar un terreno en proyecto de valor",
+      "Ubicación y factibilidad técnica/económica",
+      "Estructuración contractual transparente",
+      "Proyecto ejecutado integralmente por AC"
     ],
     image: "/edificio.jpg",
     gallery: [
@@ -192,37 +192,6 @@ const professionalServicesData: ProfessionalService[] = [
   }
 ];
 
-const featuredSlides = [
-  {
-    image: "/edificio.jpg",
-    tag: "Desarrollo Urbano",
-    title: "Edificio de Departamentos Exclusivos",
-    description: "Unidades modernas de 1 y 2 dormitorios con excelente iluminación natural, terminaciones de categoría y ubicaciones estratégicas para máxima valorización.",
-    specs: ["Balcones con vista", "Cocheras", "Terminaciones DVH"]
-  },
-  {
-    image: "/contenedor-1.png",
-    tag: "Casas Modulares - Vista Frontal",
-    title: "Sistema Habitacional Avanzado",
-    description: "Módulos acoplables de diseño moderno con estructura metálica y paneles de alta aislación térmica listos para habitar en destino.",
-    specs: ["Montaje rápido", "Sismorresistente", "Apto crédito"]
-  },
-  {
-    image: "/contenedor-2.png",
-    tag: "Casas Modulares - Vista Interior / Módulos",
-    title: "Confort y Terminaciones de Calidad",
-    description: "Interiores optimizados con instalaciones completas de luz y agua, aberturas de aluminio y pisos vinílicos de alta resistencia.",
-    specs: ["Baño completo", "Cocina equipada", "Pisos SPC"]
-  },
-  {
-    image: "/exterior.jpg",
-    tag: "Diseño y Paisajismo",
-    title: "Exteriores, Galerías y Jardines",
-    description: "Paisajismo integral, diseño de galerías, quinchos y espacios verdes conectados de forma fluida con la arquitectura del hogar.",
-    specs: ["Riegos automáticos", "Pérgolas y decks", "Iluminación exterior"]
-  }
-];
-
 export default function Home() {
   const [selectedModel, setSelectedModel] = useState<ModelDetail | null>(null);
   const [selectedService, setSelectedService] = useState<ProfessionalService | null>(null);
@@ -231,21 +200,9 @@ export default function Home() {
   const [activeModalImage, setActiveModalImage] = useState<string>('');
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
-  // Estados para el slider del proyecto destacado
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Estados para el formulario de contacto con WhatsApp
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
   const [mensaje, setMensaje] = useState('');
-
-  // Rotación automática cada 7 segundos
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % featuredSlides.length);
-    }, 7000);
-    return () => clearInterval(timer);
-  }, []);
 
   const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -278,24 +235,24 @@ export default function Home() {
   const faqData = {
     construccion: [
       {
-        pregunta: "¿Cuánto demora la fabricación y entrega de una vivienda?",
-        respuesta: "Los plazos varían según la tipología y complejidad, pero oscilan entre 45 y 60 días desde la aprobación del proyecto ejecutivo y la firma del contrato."
+        pregunta: "¿Cómo funciona el esquema de aporte de tierra?",
+        respuesta: "Vos aportás el terreno y AC estructura la oportunidad y la ejecución. El propietario recibe unidades terminadas como contraprestación contractual."
       },
       {
-        pregunta: "¿Es posible ampliar la vivienda a futuro?",
-        respuesta: "¡Sí! El sistema constructivo permite incorporar nuevos espacios habitacionales de forma rápida y sencilla, adaptando la propiedad a las nuevas necesidades."
+        pregunta: "¿Cómo se evalúa la viabilidad del terreno?",
+        respuesta: "Cada operación se analiza individualmente en base a su ubicación, la normativa municipal vigente y el mercado inmobiliario actual."
       },
       {
-        pregunta: "¿Qué tipo de fundaciones necesitan estas construcciones?",
-        respuesta: "Generalmente se utilizan pilotes de hormigón o plateas, dependiendo de las características del suelo y el modelo elegido. Realizamos un estudio previo en cada terreno."
+        pregunta: "¿Qué incluye la planta baja del edificio?",
+        respuesta: "La planta baja está destinada principalmente al área de cocheras cubiertas y accesos principales jerarquizados para los propietarios."
       },
       {
-        pregunta: "¿Las construcciones son aptas para cualquier clima?",
-        respuesta: "Absolutamente. Gracias a nuestros paneles de aislamiento térmico de alta densidad, garantizan un excelente confort interior tanto en climas fríos como calurosos."
+        pregunta: "¿Cuáles son las etapas del proyecto de desarrollo?",
+        respuesta: "Se divide en 4 etapas principales: 01 / Analizar, 02 / Proyectar, 03 / Acordar y 04 / Desarrollar la obra completa."
       },
       {
-        pregunta: "¿Se pueden trasladar las estructuras a otro terreno?",
-        respuesta: "Sí, es una de las grandes ventajas. Si bien implica un costo de logística y montaje, la estructura permite desarmar y reubicar la propiedad en una nueva ubicación."
+        pregunta: "¿Cómo puedo coordinar una reunión para analizar mi terreno?",
+        respuesta: "Podés dejarnos tus datos en el formulario de contacto para evaluar la factibilidad técnica y económica de tu lote con nuestro equipo."
       }
     ],
     diseno: [
@@ -345,148 +302,211 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-950 text-neutral-100 font-sans selection:bg-slate-400 selection:text-neutral-950">
-      {/* --- NAVBAR --- */}
-      <header className="sticky top-0 z-50 bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800">
-        <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="text-xl font-light tracking-widest uppercase text-slate-200">
-            AC <span className="font-bold text-slate-400">Constructora</span>
-          </div>
+    <div className="min-h-screen bg-[#f7f5f0] text-[#171717] font-sans selection:bg-[#cfc5b5] selection:text-[#171717]">
+      {/* --- NAVBAR Minimalista --- */}
+      <header className="sticky top-0 z-50 bg-[#f7f5f0]/90 backdrop-blur-md border-b border-[#171717]/15">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <a href="#" className="font-bold tracking-[0.24em] text-xl uppercase">
+            AC <small className="block text-[8px] font-normal tracking-[0.28em] -mt-1 text-[#6e6a63]">ESTUDIO</small>
+          </a>
           
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-neutral-400">
-            <a href="#proyectos" className="hover:text-slate-200 transition-colors">Proyectos</a>
-            <a href="#tipologias" className="hover:text-slate-200 transition-colors">Servicios</a>
-            <a href="#diseno" className="hover:text-slate-200 transition-colors">Diseño</a>
-            <a href="#sistema" className="hover:text-slate-200 transition-colors">Sistema</a>
-            <a href="#faq" className="hover:text-slate-200 transition-colors">FAQ</a>
-            <a href="#contacto" className="hover:text-slate-200 transition-colors">Contacto</a>
+          <nav className="hidden md:flex items-center gap-8 text-[11px] font-semibold tracking-[0.15em] uppercase text-[#6e6a63]">
+            <a href="#servicios" className="hover:text-[#171717] transition-colors">Servicios</a>
+            <a href="#desarrollos" className="hover:text-[#171717] transition-colors">Aporte de Tierra</a>
+            <a href="#proyectos" className="hover:text-[#171717] transition-colors">Proyectos</a>
+            <a href="#sistema" className="hover:text-[#171717] transition-colors">Modular</a>
+            <a href="#faq" className="hover:text-[#171717] transition-colors">FAQ</a>
+            <a href="#contacto" className="hover:text-[#171717] transition-colors">Contacto</a>
           </nav>
 
           <a 
             href="#contacto" 
-            className="bg-slate-200 hover:bg-white text-neutral-950 px-5 py-2.5 rounded-none text-xs font-semibold tracking-widest uppercase transition-all shadow-md"
+            className="bg-[#171717] hover:bg-[#2c2b29] text-[#fcfbf8] px-5 py-2.5 rounded-none text-[10px] font-semibold tracking-[0.15em] uppercase transition-all shadow-sm"
           >
-            Cotizar
+            Contacto
           </a>
         </div>
       </header>
 
-      {/* --- HERO SECTION --- */}
-      <section className="relative w-full h-[90vh] flex items-center justify-between overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/edificio.jpg" 
-            alt="AC Constructora - Edificio de Departamentos" 
-            className="w-full h-full object-cover object-center brightness-125"
-          />
-          <div className="absolute inset-0 bg-gradient-to-bl from-neutral-950/60 via-neutral-950/30 to-neutral-950/70"></div>
-        </div>
-
-        <div className="relative z-10 max-w-7xl w-full mx-auto px-6 h-full flex flex-col justify-between py-12">
-          <div className="self-end text-right max-w-xl">
-            <span className="text-slate-300 font-mono text-xs tracking-widest uppercase mb-3 inline-block bg-neutral-950/80 px-3 py-1.5 border border-neutral-700 shadow-lg">
-              Arquitectura, Proyectos y Construcción Eficiente
+      {/* --- HERO SECTION Editorial --- */}
+      <section className="relative min-h-[calc(100vh-80px)] max-w-7xl mx-auto px-6 py-12 md:py-20 flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] mb-6 block font-medium">
+              Diseño • Arquitectura • Desarrollos • Interior & Exterior
             </span>
-            <h1 className="text-3xl md:text-5xl font-extralight tracking-tight leading-tight text-neutral-100">
-              Espacios de vanguardia, confort superior y <span className="font-bold text-slate-300">diseño exclusivo.</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-[0.95] tracking-tight mb-8 text-[#171717]">
+              Espacios<br /><em className="font-serif italic font-normal">con intención.</em>
             </h1>
-          </div>
-
-          <div className="self-start text-left max-w-xl">
-            <p className="text-neutral-200 text-base md:text-lg mb-6 leading-relaxed font-light">
-              Construimos tu hogar o proyecto comercial con un sistema rápido, eficiente y de calidad superior.
+            <p className="text-lg md:text-xl text-[#555149] leading-relaxed max-w-xl font-light mb-8">
+              AC crea proyectos integrales donde arquitectura, inversión y diseño se encuentran. Desde el terreno hasta el último detalle.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="#proyectos" className="bg-slate-200 text-neutral-950 px-8 py-4 font-medium text-xs tracking-widest uppercase text-center hover:bg-white transition shadow-lg">
-                Ver Proyectos
+              <a href="#desarrollos" className="bg-[#171717] text-[#fcfbf8] px-7 py-4 text-[10px] font-semibold tracking-[0.15em] uppercase text-center hover:bg-[#2c2b29] transition shadow-md">
+                Descubrir AC
               </a>
-              <a href="#contacto" className="border border-neutral-400 hover:border-white text-neutral-100 bg-neutral-950/40 backdrop-blur-sm px-8 py-4 font-medium text-xs tracking-widest uppercase text-center transition">
-                Contactar Asesor
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- 1. PROYECTO DESTACADO CON SLIDER AUTOMÁTICO PURO (SIN ETIQUETAS DE NÚMEROS) --- */}
-      <section id="proyectos" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
-        <span className="text-xs font-mono text-slate-400 bg-neutral-950 px-2.5 py-1 border border-neutral-800 uppercase tracking-widest mb-3 inline-block">
-          Galería Interactiva
-        </span>
-        <h2 className="text-3xl font-light tracking-wide mb-2">Proyecto Destacado en Detalle</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Explora las distintas propuestas y visualiza sus descripciones actualizadas en tiempo real.</p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-neutral-900/40 border border-neutral-800/80 p-6 md:p-8 relative">
-          
-          {/* Contenedor de la Imagen con Slider Automático Suave (Fade Transition) */}
-          <div className="overflow-hidden border border-neutral-800 relative h-[340px] select-none bg-neutral-950">
-            {featuredSlides.map((slide, idx) => (
-              <img 
-                key={idx}
-                src={slide.image} 
-                alt={slide.title} 
-                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
-                  currentSlide === idx 
-                    ? 'opacity-100 scale-100 z-10' 
-                    : 'opacity-0 scale-105 pointer-events-none z-0'
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Panel de descripciones dinámicas con transición suave */}
-          <div className="flex flex-col justify-between h-full">
-            <div>
-              <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">
-                {featuredSlides[currentSlide].tag}
-              </span>
-              <h3 className="text-2xl font-light mb-4 text-neutral-100">{featuredSlides[currentSlide].title}</h3>
-              <p className="text-neutral-300 text-sm font-light leading-relaxed mb-6">
-                {featuredSlides[currentSlide].description}
-              </p>
-              <ul className="space-y-2 mb-8">
-                {featuredSlides[currentSlide].specs.map((spec, sIdx) => (
-                  <li key={sIdx} className="text-xs text-neutral-300 flex items-center gap-2 font-light">
-                    <span className="text-slate-500 font-mono">✓</span> {spec}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Puntitos indicadores automáticos limpios */}
-            <div className="flex items-center gap-2 pt-4 border-t border-neutral-800/80">
-              {featuredSlides.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`h-2 transition-all duration-500 ${
-                    currentSlide === idx 
-                      ? 'w-8 bg-slate-200' 
-                      : 'w-2 bg-neutral-700'
-                  }`}
-                />
-              ))}
-              <a href="#contacto" className="ml-auto inline-block bg-slate-200 hover:bg-white text-neutral-950 font-medium px-5 py-2 text-xs tracking-widest uppercase transition">
+              <a href="#contacto" className="border border-[#171717]/30 hover:border-[#171717] text-[#171717] bg-transparent px-7 py-4 text-[10px] font-semibold tracking-[0.15em] uppercase text-center transition">
                 Consultar
               </a>
             </div>
           </div>
 
+          <div 
+            onClick={() => setZoomedImage("/edificio.jpg")}
+            className="h-[420px] md:h-[580px] bg-[#eee9df] border border-[#171717]/15 relative overflow-hidden group cursor-pointer shadow-lg"
+            title="Ampliar imagen"
+          >
+            <img 
+              src="/edificio.jpg" 
+              alt="AC Estudio - Arquitectura y Desarrollos" 
+              className="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90"
+            />
+            <div className="absolute top-4 right-4 bg-[#f7f5f0]/80 backdrop-blur-sm px-3 py-1 border border-[#171717]/15 text-[9px] font-mono tracking-widest text-[#171717]">
+              AC / 01
+            </div>
+            <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span className="bg-[#171717] text-[#fcfbf8] text-[10px] tracking-widest uppercase font-mono px-3 py-1.5">🔍 Ampliar Vista</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* --- 2. TARJETAS --- */}
-      <section id="tipologias" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
-        <span className="text-xs font-mono text-slate-400 bg-neutral-950 px-2.5 py-1 border border-neutral-800 uppercase tracking-widest mb-3 inline-block">
-          Nuestras Soluciones
-        </span>
-        <h2 className="text-3xl font-light tracking-wide mb-2">Propuestas Integrales</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Hacé clic en cualquiera de las opciones para ver el detalle completo y su galería de fotos.</p>
+      {/* --- SERVICIOS / LO QUE HACEMOS --- */}
+      <section id="servicios" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+          <div className="lg:col-span-5">
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Lo que hacemos</span>
+            <h2 className="text-4xl md:text-6xl font-light leading-[0.95] tracking-tight">Una mirada<br />integral.</h2>
+          </div>
+          <div className="lg:col-span-7 flex items-end">
+            <p className="text-lg text-[#555149] font-light leading-relaxed max-w-xl">
+              No diseñamos solamente edificios. Diseñamos cómo se vive un espacio, cómo se construye y cómo puede convertirse en una inversión sostenible.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-[#171717]/15 border border-[#171717]/15">
+          <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
+            <div className="text-[10px] font-mono tracking-widest text-[#6e6a63]">01</div>
+            <div>
+              <h3 className="text-xl font-normal mb-2">Diseño</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Concepto, materialidad, identidad y soluciones pensadas exclusivamente para cada proyecto.</p>
+            </div>
+          </article>
+          <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
+            <div className="text-[10px] font-mono tracking-widest text-[#6e6a63]">02</div>
+            <div>
+              <h3 className="text-xl font-normal mb-2">Arquitectura</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Proyectos residenciales y comerciales con una estética contemporánea, limpia y funcional.</p>
+            </div>
+          </article>
+          <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
+            <div className="text-[10px] font-mono tracking-widest text-[#6e6a63]">03</div>
+            <div>
+              <h3 className="text-xl font-normal mb-2">Desarrollos</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Analizamos terrenos y estructuramos oportunidades inmobiliarias bajo esquema de aporte.</p>
+            </div>
+          </article>
+          <article className="bg-[#f7f5f0] p-8 min-h-[260px] flex flex-col justify-between hover:bg-[#eee9df] transition duration-300">
+            <div className="text-[10px] font-mono tracking-widest text-[#6e6a63]">04</div>
+            <div>
+              <h3 className="text-xl font-normal mb-2">Interior & Exterior</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Diseñamos el espacio completo: interiores, patios, terrazas, paisajismo y mobiliario a medida.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      {/* --- DESARROLLO / APORTE DE TIERRA (Dark Section) --- */}
+      <section id="desarrollos" className="bg-[#1b1b1a] text-[#f7f5f0] py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-[10px] tracking-[0.25em] uppercase text-[#a39e93] block mb-4 font-medium">
+                AC / Desarrollo Inmobiliario
+              </span>
+              <h2 className="text-4xl md:text-6xl font-light leading-[0.95] tracking-tight mb-6">
+                Tu terreno puede ser el comienzo.
+              </h2>
+              <p className="text-base md:text-lg text-[#c6c1b8] font-light leading-relaxed mb-8 max-w-xl">
+                Evaluamos terrenos con potencial y proponemos desarrollos donde el propietario puede participar mediante un esquema de aporte de tierra, sujeto a la factibilidad y estructura de cada proyecto.
+              </p>
+              <a href="#contacto" className="inline-block bg-[#f7f5f0] text-[#171717] px-8 py-4 text-[10px] font-semibold tracking-[0.15em] uppercase hover:bg-white transition shadow-md">
+                Evaluar mi terreno
+              </a>
+            </div>
+
+            <div 
+              onClick={() => setZoomedImage("/edificio.jpg")}
+              className="h-[380px] md:h-[480px] bg-[#2d2d2b] border border-neutral-800 relative overflow-hidden group cursor-pointer"
+            >
+              <img 
+                src="/edificio.jpg" 
+                alt="Desarrollo Inmobiliario AC" 
+                className="w-full h-full object-cover group-hover:scale-105 transition duration-500 opacity-80"
+              />
+              <div className="absolute bottom-4 left-4 bg-neutral-900/90 text-[#f7f5f0] px-3 py-1.5 text-[9px] font-mono tracking-widest border border-neutral-700 uppercase">
+                Concepto / Desarrollo en pozo
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- PROPUESTA APORTE DE TIERRA & PASOS --- */}
+      <section className="bg-[#e9e3d8] py-24 border-t border-[#171717]/15">
+        <div className="max-w-7xl mx-auto px-6">
+          <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Aporte de tierra</span>
+          <h2 className="text-4xl md:text-5xl font-light leading-tight tracking-tight mb-12">
+            Transformar un terreno en un proyecto de valor.
+          </h2>
+
+          <div className="border-y border-[#171717] py-12 mb-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="text-3xl md:text-5xl font-light tracking-tight leading-tight text-[#171717]">
+              Vos aportás el terreno.<br />AC desarrolla la oportunidad.
+            </div>
+            <div>
+              <p className="text-base md:text-lg text-[#555149] font-light leading-relaxed mb-4">
+                La propuesta contempla que el propietario reciba unidades como contraprestación, mientras AC estructura el proyecto y la construcción. Cada operación se analiza individualmente según ubicación, normativa, superficies, costos y mercado.
+              </p>
+              <p className="text-xs text-[#77736a] font-mono">
+                * La estructura definitiva debe quedar establecida contractualmente y sujeta a factibilidad técnica, urbanística y económica.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-[#171717]/20">
+            <div className="p-6 border-r border-b sm:border-b-0 border-[#171717]/20 min-h-[160px] flex flex-col justify-between">
+              <span className="text-[10px] font-mono tracking-widest font-bold text-[#171717] uppercase">01 / ANALIZAR</span>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Estudiamos el terreno y su potencial de densificación.</p>
+            </div>
+            <div className="p-6 border-r border-b sm:border-b-0 border-[#171717]/20 min-h-[160px] flex flex-col justify-between">
+              <span className="text-[10px] font-mono tracking-widest font-bold text-[#171717] uppercase">02 / PROYECTAR</span>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Definimos el producto arquitectónico y la tipología de unidades.</p>
+            </div>
+            <div className="p-6 border-r border-b sm:border-b-0 border-[#171717]/20 min-h-[160px] flex flex-col justify-between">
+              <span className="text-[10px] font-mono tracking-widest font-bold text-[#171717] uppercase">03 / ACORDAR</span>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Estructuramos la participación contractual de cada parte.</p>
+            </div>
+            <div className="p-6 min-h-[160px] flex flex-col justify-between">
+              <span className="text-[10px] font-mono tracking-widest font-bold text-[#171717] uppercase">04 / DESARROLLAR</span>
+              <p className="text-xs text-[#6e6a63] leading-relaxed">Llevamos el proyecto desde la idea conceptual hasta la llave en mano.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- TARJETAS INTERACTIVAS (Propuestas y Modelos) --- */}
+      <section id="proyectos" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
+        <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Catálogo de Soluciones</span>
+        <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4">Unidades y Soluciones AC</h2>
+        <p className="text-[#6e6a63] mb-12 max-w-xl font-light">Hacé clic en cualquiera de las opciones para explorar galerías completas y fichas técnicas.</p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {modelsData.map((model) => (
             <div 
               key={model.id}
-              className="bg-neutral-900/40 border border-neutral-800/80 rounded-none p-6 group hover:border-slate-500 transition duration-300 flex flex-col justify-between"
+              className="bg-[#eee9df]/50 border border-[#171717]/15 p-6 group hover:border-[#171717] transition duration-300 flex flex-col justify-between"
             >
               <div>
                 <div 
@@ -494,7 +514,7 @@ export default function Home() {
                     e.stopPropagation();
                     setZoomedImage(model.image);
                   }}
-                  className="overflow-hidden border border-neutral-800 mb-4 relative h-[200px] cursor-pointer"
+                  className="overflow-hidden border border-[#171717]/15 mb-4 relative h-[220px] cursor-pointer bg-[#eee9df]"
                   title="Ampliar foto principal"
                 >
                   <img 
@@ -502,31 +522,30 @@ export default function Home() {
                     alt={model.name} 
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="bg-neutral-950/80 text-white text-[10px] font-mono px-2 py-1 border border-neutral-700">🔍 Ampliar</span>
+                  <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="bg-[#171717] text-[#fcfbf8] text-[9px] font-mono px-2 py-1">🔍 Ampliar</span>
                   </div>
                 </div>
 
                 <div onClick={() => handleOpenModal(model)} className="cursor-pointer">
                   <div className="flex justify-between items-start mb-3">
-                    <span className="text-xs font-mono text-slate-400 bg-neutral-950 px-2.5 py-1 border border-neutral-800">
+                    <span className="text-[10px] font-mono text-[#6e6a63] bg-[#f7f5f0] px-2 py-1 border border-[#171717]/10">
                       {model.size}
                     </span>
-                    <span className="text-xs font-mono text-neutral-500">{model.dimensions}</span>
+                    <span className="text-[10px] font-mono text-[#6e6a63]">{model.dimensions}</span>
                   </div>
-                  <h3 className="text-xl font-normal mb-2 text-neutral-200">{model.name}</h3>
-                  <p className="text-neutral-400 text-sm mb-6 font-light line-clamp-2">{model.description}</p>
+                  <h3 className="text-xl font-normal mb-2 text-[#171717]">{model.name}</h3>
+                  <p className="text-[#6e6a63] text-xs mb-6 font-light leading-relaxed line-clamp-3">{model.description}</p>
                 </div>
               </div>
 
-              <div onClick={() => handleOpenModal(model)} className="cursor-pointer">
-                <div className="mb-6 pt-4 border-t border-neutral-800/60">
-                  {model.oldPrice && <span className="text-xs text-neutral-500 line-through">Anterior: {model.oldPrice}</span>}
-                  <span className="block text-xl text-slate-200 font-light">{model.price}</span>
-                  <span className="text-xs text-slate-400 uppercase tracking-wider font-mono">{model.condition}</span>
+              <div onClick={() => handleOpenModal(model)} className="cursor-pointer pt-4 border-t border-[#171717]/15">
+                <div className="mb-4">
+                  <span className="block text-lg text-[#171717] font-normal">{model.price}</span>
+                  <span className="text-[10px] text-[#6e6a63] uppercase tracking-wider font-mono">{model.condition}</span>
                 </div>
-                <span className="text-slate-400 font-medium text-xs tracking-widest uppercase inline-flex items-center gap-1 group-hover:text-white transition-all">
-                  Ver galería y detalles &rarr;
+                <span className="text-[#171717] font-medium text-[10px] tracking-[0.15em] uppercase inline-flex items-center gap-1 group-hover:underline">
+                  Ver detalles completos &rarr;
                 </span>
               </div>
             </div>
@@ -534,445 +553,298 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- MODAL DE DETALLE --- */}
-      {selectedModel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/85 backdrop-blur-md">
-          <div className="bg-neutral-900 border border-neutral-800 max-w-xl w-full max-h-[90vh] p-6 relative shadow-2xl overflow-y-auto">
-            <button 
-              onClick={() => setSelectedModel(null)}
-              className="absolute top-4 right-4 text-neutral-400 hover:text-white text-xl font-mono p-2 z-20 bg-neutral-950 border border-neutral-800"
-            >
-              [✕]
-            </button>
+      {/* --- SECCIÓN DISEÑO INTERIOR & EXTERIOR --- */}
+      <section className="bg-[#eee9df] py-24 border-t border-[#171717]/15">
+        <div className="max-w-7xl mx-auto px-6">
+          <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Interior & Exterior</span>
+          <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4">Del proyecto al último detalle.</h2>
+          <p className="text-[#6e6a63] mb-12 max-w-xl font-light">Diseño integral de espacios para transformar el modo en que se viven.</p>
 
-            <div 
-              onClick={() => setZoomedImage(activeModalImage)}
-              className="mb-4 overflow-hidden border border-neutral-800 relative h-[240px] sm:h-[280px] cursor-pointer group select-none"
-              title="Hacer clic para ampliar imagen en pantalla completa"
-            >
-              <img 
-                src={activeModalImage} 
-                alt={selectedModel.name} 
-                className="w-full h-full object-cover transition duration-300"
-              />
-
-              <button 
-                onClick={handlePrevImage}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-neutral-950/80 hover:bg-neutral-900 text-white p-2 rounded-full border border-neutral-700 opacity-80 group-hover:opacity-100 transition z-10"
-                title="Foto anterior"
-              >
-                &#10094;
-              </button>
-
-              <button 
-                onClick={handleNextImage}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-neutral-950/80 hover:bg-neutral-900 text-white p-2 rounded-full border border-neutral-700 opacity-80 group-hover:opacity-100 transition z-10"
-                title="Foto siguiente"
-              >
-                &#10095;
-              </button>
-
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="bg-neutral-950/80 text-white text-xs font-mono px-3 py-1 border border-neutral-700">🔍 Ampliar en pantalla completa</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-center gap-1.5 flex-wrap mb-5 px-2">
-              {selectedModel.gallery.map((imgSrc, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveModalImage(imgSrc)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    activeModalImage === imgSrc 
-                      ? 'bg-slate-200 scale-125 ring-2 ring-neutral-700' 
-                      : 'bg-neutral-700 hover:bg-neutral-500'
-                  }`}
-                  title={`Ver foto ${idx + 1}`}
-                />
-              ))}
-            </div>
-
-            <div className="mb-4 pr-8 border-b border-neutral-800 pb-3">
-              <span className="text-slate-400 font-mono text-xs tracking-widest uppercase mb-1 inline-block">
-                {selectedModel.dimensions} • {selectedModel.size}
-              </span>
-              <h2 className="text-xl font-light text-neutral-100">{selectedModel.name}</h2>
-              <div className="mt-2 flex items-baseline gap-3">
-                <span className="text-xl font-normal text-slate-200">{selectedModel.price}</span>
-                {selectedModel.oldPrice && <span className="text-xs text-neutral-500 line-through">{selectedModel.oldPrice}</span>}
-                <span className="text-xs tracking-widest uppercase text-slate-400 font-mono ml-auto">{selectedModel.condition}</span>
-              </div>
-            </div>
-
-            <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed mb-5 font-light">
-              {selectedModel.description}
-            </p>
-
-            <div className="grid grid-cols-1 gap-5 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-[#f7f5f0] border border-[#171717]/15 p-6 flex flex-col justify-between group hover:border-[#171717] transition duration-300">
               <div>
-                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2 border-b border-neutral-800 pb-1.5">
-                  Incluye:
-                </h3>
-                <ul className="space-y-1.5">
-                  {selectedModel.includes.map((item, idx) => (
-                    <li key={idx} className="text-xs text-neutral-300 flex items-start gap-2 font-light">
-                      <span className="text-slate-500 font-mono">✓</span> {item}
-                    </li>
-                  ))}
-                </ul>
+                <div 
+                  onClick={() => setZoomedImage("/interior-1.jpg")}
+                  className="overflow-hidden border border-[#171717]/15 mb-6 relative h-[260px] cursor-pointer"
+                >
+                  <img 
+                    src="/interior-1.jpg" 
+                    alt="Diseño de Interiores" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </div>
+                <h3 className="text-2xl font-light text-[#171717] mb-3">Diseño de Interiores</h3>
+                <p className="text-[#6e6a63] text-sm font-light leading-relaxed mb-6">
+                  Creación de ambientes armónicos optimizando la distribución de livings, cocinas integradas completas, comedores y habitaciones con mobiliario a medida.
+                </p>
               </div>
               
+              <button 
+                onClick={() => setSelectedService(professionalServicesData[0])}
+                className="w-full bg-[#171717] hover:bg-[#2c2b29] text-[#fcfbf8] font-medium py-3 text-[10px] tracking-[0.15em] uppercase transition"
+              >
+                Ver propuesta de Interiores &rarr;
+              </button>
+            </div>
+
+            <div className="bg-[#f7f5f0] border border-[#171717]/15 p-6 flex flex-col justify-between group hover:border-[#171717] transition duration-300">
               <div>
-                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-400 mb-2 border-b border-neutral-800 pb-1.5">
-                  Ventajas:
-                </h3>
-                <ul className="space-y-1.5">
-                  {selectedModel.features.map((feature, idx) => (
-                    <li key={idx} className="text-xs text-neutral-300 flex items-start gap-2 font-light">
-                      <span className="text-slate-500 font-mono">+</span> {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <a 
-              href="#contacto" 
-              onClick={() => setSelectedModel(null)}
-              className="block w-full bg-slate-200 hover:bg-white text-neutral-950 font-medium py-3 text-xs tracking-widest uppercase text-center transition shadow-lg"
-            >
-              Consultar por esta opción
-            </a>
-          </div>
-        </div>
-      )}
-
-      {/* --- MODAL DE SERVICIO --- */}
-      {selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-neutral-950/85 backdrop-blur-md">
-          <div className="bg-neutral-900 border border-neutral-800 max-w-2xl w-full max-h-[90vh] p-6 sm:p-8 relative shadow-2xl overflow-y-auto">
-            <button 
-              onClick={() => setSelectedService(null)}
-              className="absolute top-4 right-4 text-neutral-400 hover:text-white text-xl font-mono p-2 z-20 bg-neutral-950 border border-neutral-800"
-            >
-              [✕]
-            </button>
-
-            <div 
-              onClick={() => setZoomedImage(selectedService.image)}
-              className="mb-5 overflow-hidden border border-neutral-800 relative h-[220px] sm:h-[260px] cursor-pointer group"
-              title="Ampliar imagen"
-            >
-              <img 
-                src={selectedService.image} 
-                alt={selectedService.title} 
-                className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-              />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="bg-neutral-950/80 text-white text-xs font-mono px-3 py-1 border border-neutral-700">🔍 Ampliar foto</span>
-              </div>
-            </div>
-
-            <div className="mb-6 border-b border-neutral-800 pb-4">
-              <span className="text-slate-400 font-mono text-xs tracking-widest uppercase mb-1.5 inline-block bg-neutral-950 px-2.5 py-1 border border-neutral-800">
-                {selectedService.badge}
-              </span>
-              <h2 className="text-2xl font-light text-neutral-100">{selectedService.title}</h2>
-              <p className="text-xs text-neutral-400 font-mono mt-1">{selectedService.subtitle}</p>
-            </div>
-
-            <p className="text-neutral-300 text-sm leading-relaxed mb-6 font-light">
-              {selectedService.description}
-            </p>
-
-            <div className="space-y-6 mb-8">
-              {selectedService.fullDetails.map((detail, idx) => (
-                <div key={idx} className="bg-neutral-950/50 border border-neutral-800 p-4">
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-slate-300 mb-3 border-b border-neutral-800 pb-2">
-                    {detail.heading}
-                  </h3>
-                  <ul className="space-y-2">
-                    {detail.items.map((item, iIdx) => (
-                      <li key={iIdx} className="text-xs text-neutral-300 flex items-start gap-2 font-light">
-                        <span className="text-slate-500 font-mono">✓</span> {item}
-                      </li>
-                    ))}
-                  </ul>
+                <div 
+                  onClick={() => setZoomedImage("/exterior.jpg")}
+                  className="overflow-hidden border border-[#171717]/15 mb-6 relative h-[260px] cursor-pointer"
+                >
+                  <img 
+                    src="/exterior.jpg" 
+                    alt="Diseño de Jardines y Exteriores" 
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  />
                 </div>
-              ))}
-
-              <div className="bg-neutral-950/50 border border-neutral-800 p-4">
-                <h3 className="text-xs font-mono uppercase tracking-widest text-slate-300 mb-3 border-b border-neutral-800 pb-2">
-                  Etapas del Proyecto
-                </h3>
-                <ul className="space-y-2">
-                  {selectedService.phases.map((phase, pIdx) => (
-                    <li key={pIdx} className="text-xs text-neutral-300 flex items-start gap-2 font-light">
-                      <span className="text-slate-500 font-mono">•</span> {phase}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="text-2xl font-light text-[#171717] mb-3">Diseño de Exteriores & Paisajismo</h3>
+                <p className="text-[#6e6a63] text-sm font-light leading-relaxed mb-6">
+                  Paisajismo integral, diseño de galerías, iluminación exterior, senderos y espacios verdes conectados de forma fluida con la arquitectura.
+                </p>
               </div>
-            </div>
-
-            <a 
-              href="#contacto" 
-              onClick={() => setSelectedService(null)}
-              className="block w-full bg-slate-200 hover:bg-white text-neutral-950 font-medium py-3.5 text-xs tracking-widest uppercase text-center transition shadow-lg"
-            >
-              Cotizar este Servicio Profesional
-            </a>
-          </div>
-        </div>
-      )}
-
-      {/* --- LIGHTBOX --- */}
-      {zoomedImage && (
-        <div 
-          onClick={() => setZoomedImage(null)}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-neutral-950/95 backdrop-blur-lg cursor-zoom-out"
-        >
-          <button 
-            onClick={() => setZoomedImage(null)}
-            className="absolute top-6 right-6 text-neutral-400 hover:text-white text-2xl font-mono p-2 z-10 bg-neutral-900 border border-neutral-800"
-          >
-            [✕]
-          </button>
-          
-          <div className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center">
-            <img 
-              src={zoomedImage} 
-              alt="Imagen ampliada" 
-              className="max-w-full max-h-[85vh] object-contain border border-neutral-800 shadow-2xl"
-            />
-          </div>
-        </div>
-      )}
-
-      {/* --- SECCIÓN DISEÑO INTERIOR Y EXTERIOR --- */}
-      <section id="diseno" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
-        <span className="text-xs font-mono text-slate-400 bg-neutral-950 px-2.5 py-1 border border-neutral-800 uppercase tracking-widest mb-3 inline-block">
-          Servicios Profesionales
-        </span>
-        <h2 className="text-3xl font-light tracking-wide mb-2">Diseño Interior y Exterior</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Espacios funcionales y estéticos integrados: livings, cocinas completas, habitaciones, jardines y galerías.</p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-neutral-900/40 border border-neutral-800/80 p-6 flex flex-col justify-between group hover:border-slate-500 transition duration-300">
-            <div>
-              <div 
-                onClick={() => setZoomedImage("/interior-1.jpg")}
-                className="overflow-hidden border border-neutral-800 mb-6 relative h-[240px] cursor-pointer"
-                title="Ampliar foto"
+              
+              <button 
+                onClick={() => setSelectedService(professionalServicesData[1])}
+                className="w-full bg-[#171717] hover:bg-[#2c2b29] text-[#fcfbf8] font-medium py-3 text-[10px] tracking-[0.15em] uppercase transition"
               >
-                <img 
-                  src="/interior-1.jpg" 
-                  alt="Diseño de Interiores" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="bg-neutral-950/80 text-white text-[10px] font-mono px-2 py-1 border border-neutral-700">🔍 Ampliar Living/Interior</span>
-                </div>
-              </div>
-              <h3 className="text-xl font-normal text-neutral-200 mb-3">Diseño de Interiores (Livings, Cocinas y Dormitorios)</h3>
-              <p className="text-neutral-400 text-sm font-light leading-relaxed mb-6">
-                Creación de ambientes armónicos optimizando la distribución de livings, cocinas integradas completas, comedores y habitaciones con mobiliario a medida.
-              </p>
+                Ver propuesta de Exteriores &rarr;
+              </button>
             </div>
-            
-            <button 
-              onClick={() => setSelectedService(professionalServicesData[0])}
-              className="w-full bg-neutral-950 hover:bg-neutral-900 text-slate-200 border border-neutral-700 font-medium py-3 text-xs tracking-widest uppercase transition flex items-center justify-center gap-2"
-            >
-              Ver detalle completo y fases &rarr;
-            </button>
-          </div>
-
-          <div className="bg-neutral-900/40 border border-neutral-800/80 p-6 flex flex-col justify-between group hover:border-slate-500 transition duration-300">
-            <div>
-              <div 
-                onClick={() => setZoomedImage("/exterior.jpg")}
-                className="overflow-hidden border border-neutral-800 mb-6 relative h-[240px] cursor-pointer"
-                title="Ampliar foto"
-              >
-                <img 
-                  src="/exterior.jpg" 
-                  alt="Diseño de Jardín y Exteriores" 
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                />
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <span className="bg-neutral-950/80 text-white text-[10px] font-mono px-2 py-1 border border-neutral-700">🔍 Ampliar Jardines y Patios</span>
-                </div>
-              </div>
-              <h3 className="text-xl font-normal text-neutral-200 mb-3">Diseño de Exteriores, Patios y Jardines</h3>
-              <p className="text-neutral-400 text-sm font-light leading-relaxed mb-6">
-                Paisajismo integral, diseño de galerías, iluminación exterior, senderos y espacios verdes conectados de forma fluida con la arquitectura de la casa.
-              </p>
-            </div>
-            
-            <button 
-              onClick={() => setSelectedService(professionalServicesData[1])}
-              className="w-full bg-neutral-950 hover:bg-neutral-900 text-slate-200 border border-neutral-700 font-medium py-3 text-xs tracking-widest uppercase transition flex items-center justify-center gap-2"
-            >
-              Ver detalle completo y fases &rarr;
-            </button>
           </div>
         </div>
       </section>
 
-      {/* --- SISTEMA --- */}
-      <section id="sistema" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
-        <h2 className="text-3xl font-light tracking-wide mb-2">El Sistema Constructivo</h2>
-        <p className="text-neutral-400 mb-12 max-w-xl font-light">Por qué elegir construcción de vanguardia y máxima eficiencia.</p>
+      {/* --- AC MODULAR / SISTEMA --- */}
+      <section id="sistema" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
+        <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">AC Modular</span>
+        <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4">Viviendas que se adaptan.</h2>
+        <p className="text-[#6e6a63] mb-12 max-w-xl font-light">
+          Soluciones modulares contemporáneas para vivienda, inversión, turismo, ampliaciones y nuevos desarrollos.
+        </p>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 bg-neutral-900/30 border border-neutral-800/80">
-            <h3 className="font-normal text-slate-300 mb-2 tracking-wide">Velocidad de obra</h3>
-            <p className="text-sm text-neutral-400 font-light">Reducción drástica de tiempos en comparación con la construcción tradicional.</p>
+          <div className="p-8 bg-[#eee9df]/40 border border-[#171717]/15">
+            <h3 className="font-normal text-lg mb-2">Velocidad de obra</h3>
+            <p className="text-xs text-[#6e6a63] leading-relaxed">Reducción drástica de tiempos en comparación con la construcción tradicional.</p>
           </div>
-          <div className="p-6 bg-neutral-900/30 border border-neutral-800/80">
-            <h3 className="font-normal text-slate-300 mb-2 tracking-wide">Aislación Térmica</h3>
-            <p className="text-sm text-neutral-400 font-light">Paneles de alta densidad que garantizan confort térmico todo el año.</p>
+          <div className="p-8 bg-[#eee9df]/40 border border-[#171717]/15">
+            <h3 className="font-normal text-lg mb-2">Aislación Térmica</h3>
+            <p className="text-xs text-[#6e6a63] leading-relaxed">Paneles de alta densidad que garantizan confort térmico todo el año.</p>
           </div>
-          <div className="p-6 bg-neutral-900/30 border border-neutral-800/80">
-            <h3 className="font-normal text-slate-300 mb-2 tracking-wide">Eficiencia y Solidez</h3>
-            <p className="text-sm text-neutral-400 font-light">Estructuras metálicas optimizadas de gran resistencia y durabilidad.</p>
+          <div className="p-8 bg-[#eee9df]/40 border border-[#171717]/15">
+            <h3 className="font-normal text-lg mb-2">Eficiencia y Solidez</h3>
+            <p className="text-xs text-[#6e6a63] leading-relaxed">Estructuras metálicas optimizadas de gran resistencia y durabilidad.</p>
           </div>
         </div>
       </section>
 
-      {/* --- FAQ --- */}
-      <section id="faq" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
-        <h2 className="text-3xl font-light tracking-wide mb-2">Preguntas Frecuentes</h2>
-        <p className="text-neutral-400 mb-8 max-w-xl font-light">Resolvé dudas sobre los servicios de construcción, diseño y nuestro sistema.</p>
+      {/* --- PREGUNTAS FRECUENTES (FAQ) --- */}
+      <section id="faq" className="max-w-7xl mx-auto px-6 py-24 border-t border-[#171717]/15">
+        <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">Dudas frecuentes</span>
+        <h2 className="text-3xl md:text-5xl font-light tracking-tight mb-4">Preguntas Frecuentes</h2>
+        <p className="text-[#6e6a63] mb-8 max-w-xl font-light">Resolvé inquietudes sobre desarrollos, servicios de diseño y sistemas constructivos.</p>
         
-        <div className="flex gap-4 mb-8 border-b border-neutral-800 pb-4 flex-wrap">
+        <div className="flex gap-2 mb-8 border-b border-[#171717]/15 pb-4 flex-wrap">
           <button
             onClick={() => setActiveFaqTab('construccion')}
-            className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition ${
+            className={`px-4 py-2 text-[10px] font-mono uppercase tracking-wider transition ${
               activeFaqTab === 'construccion'
-                ? 'bg-slate-200 text-neutral-950 font-medium'
-                : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200'
+                ? 'bg-[#171717] text-[#fcfbf8]'
+                : 'bg-[#eee9df] text-[#6e6a63] hover:text-[#171717]'
             }`}
           >
-            Construcción (Viviendas y Edificios)
+            Aporte de Tierra
           </button>
           <button
             onClick={() => setActiveFaqTab('diseno')}
-            className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition ${
+            className={`px-4 py-2 text-[10px] font-mono uppercase tracking-wider transition ${
               activeFaqTab === 'diseno'
-                ? 'bg-slate-200 text-neutral-950 font-medium'
-                : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200'
+                ? 'bg-[#171717] text-[#fcfbf8]'
+                : 'bg-[#eee9df] text-[#6e6a63] hover:text-[#171717]'
             }`}
           >
             Diseño Interior y Exterior
           </button>
           <button
             onClick={() => setActiveFaqTab('sistema')}
-            className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition ${
+            className={`px-4 py-2 text-[10px] font-mono uppercase tracking-wider transition ${
               activeFaqTab === 'sistema'
-                ? 'bg-slate-200 text-neutral-950 font-medium'
-                : 'bg-neutral-900 text-neutral-400 hover:text-neutral-200'
+                ? 'bg-[#171717] text-[#fcfbf8]'
+                : 'bg-[#eee9df] text-[#6e6a63] hover:text-[#171717]'
             }`}
           >
-            Sistema Constructivo
+            Sistema Modular
           </button>
         </div>
 
-        {activeFaqTab === 'construccion' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {faqData.construccion.map((faq, idx) => (
-              <div key={idx} className="p-6 bg-neutral-900/30 border border-neutral-800/80">
-                <h3 className="font-normal text-slate-300 mb-2 tracking-wide">{faq.pregunta}</h3>
-                <p className="text-sm text-neutral-400 font-light">{faq.respuesta}</p>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {activeFaqTab === 'diseno' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {faqData.diseno.map((faq, idx) => (
-              <div key={idx} className="p-6 bg-neutral-900/30 border border-neutral-800/80">
-                <h3 className="font-normal text-slate-300 mb-2 tracking-wide">{faq.pregunta}</h3>
-                <p className="text-sm text-neutral-400 font-light">{faq.respuesta}</p>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {activeFaqTab === 'sistema' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {faqData.sistema.map((faq, idx) => (
-              <div key={idx} className="p-6 bg-neutral-900/30 border border-neutral-800/80">
-                <h3 className="font-normal text-slate-300 mb-2 tracking-wide">{faq.pregunta}</h3>
-                <p className="text-sm text-neutral-400 font-light">{faq.respuesta}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {faqData[activeFaqTab].map((faq, idx) => (
+            <div key={idx} className="p-6 bg-[#eee9df]/30 border border-[#171717]/15">
+              <h3 className="font-normal text-base text-[#171717] mb-2">{faq.pregunta}</h3>
+              <p className="text-xs text-[#6e6a63] leading-relaxed font-light">{faq.respuesta}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* --- CONTACTO --- */}
-      <section id="contacto" className="max-w-6xl mx-auto px-6 py-20 border-t border-neutral-900">
-        <div className="max-w-xl bg-neutral-900/40 border border-neutral-800 p-8">
-          <h2 className="text-3xl font-light tracking-wide mb-2">Contacto</h2>
-          <p className="text-neutral-400 mb-8 text-sm font-light">Dejanos tu mensaje y nos ponemos en contacto con vos por WhatsApp para cotizar tu proyecto.</p>
-          
-          <form onSubmit={handleWhatsAppSubmit} className="space-y-4">
-            <div>
-              <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Nombre</label>
-              <input 
-                type="text" 
-                required
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" 
-                placeholder="Tu nombre" 
-              />
-            </div>
-            <div>
-              <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Teléfono / WhatsApp</label>
-              <input 
-                type="text" 
-                required
-                value={telefono}
-                onChange={(e) => setTelefono(e.target.value)}
-                className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" 
-                placeholder="Ej: 351..." 
-              />
-            </div>
-            <div>
-              <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2 font-mono">Mensaje</label>
-              <textarea 
-                rows={4} 
-                required
-                value={mensaje}
-                onChange={(e) => setMensaje(e.target.value)}
-                className="w-full bg-neutral-950 border border-neutral-800 rounded-none px-4 py-3 text-sm text-neutral-200 focus:outline-none focus:border-slate-400" 
-                placeholder="Contanos si te interesa un departamento, un proyecto o diseño de interiores..." 
-              />
-            </div>
-            <button type="submit" className="w-full bg-slate-200 hover:bg-white text-neutral-950 font-medium py-3 text-xs tracking-widest uppercase transition flex items-center justify-center gap-2">
-              Enviar por WhatsApp &rarr;
-            </button>
-          </form>
+      {/* --- SECCIÓN CONTACTO Editorial --- */}
+      <section id="contacto" className="bg-[#d8d0c4] py-24 border-t border-[#171717]/15">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[#6e6a63] block mb-3 font-medium">AC Estudio</span>
+            <h2 className="text-4xl md:text-6xl font-light leading-[0.95] tracking-tight mb-6">
+              Hagamos realidad<br />la próxima idea.
+            </h2>
+            <p className="text-base md:text-lg text-[#5c574f] font-light leading-relaxed mb-6">
+              ¿Tenés un terreno? ¿Querés construir? ¿Necesitás diseñar tu casa, departamento o espacio comercial?
+            </p>
+            <p className="text-xs font-mono uppercase tracking-widest text-[#171717]">
+              Córdoba, Argentina
+            </p>
+          </div>
+
+          <div className="bg-[#f7f5f0] border border-[#171717]/20 p-8 shadow-sm">
+            <form onSubmit={handleWhatsAppSubmit} className="space-y-4">
+              <div>
+                <label className="block text-[10px] uppercase tracking-wider text-[#6e6a63] mb-2 font-mono">Nombre</label>
+                <input 
+                  type="text" 
+                  required
+                  value={nombre}
+                  onChange={(e) => setNombre(e.target.value)}
+                  className="w-full bg-[#f7f5f0] border border-[#171717]/20 px-4 py-3 text-xs text-[#171717] focus:outline-none focus:border-[#171717]" 
+                  placeholder="Tu nombre completo" 
+                />
+              </div>
+              <div>
+                <label className="block text-[10px] uppercase tracking-wider text-[#6e6a63] mb-2 font-mono">Teléfono / WhatsApp</label>
+                <input 
+                  type="text" 
+                  required
+                  value={telefono}
+                  onChange={(e) => setTelefono(e.target.value)}
+                  className="w-full bg-[#f7f5f0] border border-[#171717]/20 px-4 py-3 text-xs text-[#171717] focus:outline-none focus:border-[#171717]" 
+                  placeholder="Ej: +54 9 351..." 
+                />
+              </div>
+              <div>
+                <label className="block text-[10px] uppercase tracking-wider text-[#6e6a63] mb-2 font-mono">Mensaje</label>
+                <textarea 
+                  rows={4} 
+                  required
+                  value={mensaje}
+                  onChange={(e) => setMensaje(e.target.value)}
+                  className="w-full bg-[#f7f5f0] border border-[#171717]/20 px-4 py-3 text-xs text-[#171717] focus:outline-none focus:border-[#171717]" 
+                  placeholder="Hola, quiero consultar por..." 
+                />
+              </div>
+              <button type="submit" className="w-full bg-[#171717] hover:bg-[#2c2b29] text-[#fcfbf8] font-semibold py-3.5 text-[10px] tracking-[0.15em] uppercase transition flex items-center justify-center gap-2">
+                Hablar con AC por WhatsApp &rarr;
+              </button>
+            </form>
+          </div>
         </div>
       </section>
 
       {/* --- FOOTER --- */}
-      <footer className="border-t border-neutral-900 py-8 text-center text-xs text-neutral-500 font-light space-y-3">
-        <p>© {new Date().getFullYear()} AC Constructora. Todos los derechos reservados.</p>
-        <div>
-          <a 
-            href="https://www.instagram.com/ac.constructora.ar/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-white transition-colors uppercase tracking-widest font-mono inline-flex items-center gap-1.5"
-          >
-            Instagram: @ac.constructora.ar &rarr;
-          </a>
+      <footer className="border-t border-[#171717]/15 py-8 bg-[#f7f5f0]">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] tracking-[0.15em] uppercase text-[#6e6a63]">
+          <span>AC ESTUDIO</span>
+          <span>Diseño · Arquitectura · Desarrollos · Interior & Exterior</span>
+          <span>© {new Date().getFullYear()}</span>
         </div>
       </footer>
+
+      {/* --- MODAL DETALLE DE MODELOS --- */}
+      {selectedModel && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-[#f7f5f0] border border-[#171717] max-w-xl w-full max-h-[90vh] p-6 relative shadow-2xl overflow-y-auto">
+            <button 
+              onClick={() => setSelectedModel(null)}
+              className="absolute top-4 right-4 text-[#171717] hover:text-[#6e6a63] text-sm font-mono p-2 z-20 bg-[#eee9df] border border-[#171717]/20"
+            >
+              [✕]
+            </button>
+
+            <div 
+              onClick={() => setZoomedImage(activeModalImage)}
+              className="mb-4 overflow-hidden border border-[#171717]/15 relative h-[240px] cursor-pointer group"
+            >
+              <img 
+                src={activeModalImage} 
+                alt={selectedModel.name} 
+                className="w-full h-full object-cover"
+              />
+              {selectedModel.gallery.length > 1 && (
+                <>
+                  <button 
+                    onClick={handlePrevImage}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-[#f7f5f0]/80 hover:bg-[#f7f5f0] text-[#171717] p-2 border border-[#171717]/20"
+                  >
+                    &#10094;
+                  </button>
+                  <button 
+                    onClick={handleNextImage}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-[#f7f5f0]/80 hover:bg-[#f7f5f0] text-[#171717] p-2 border border-[#171717]/20"
+                  >
+                    &#10095;
+                  </button>
+                </>
+              )}
+            </div>
+
+            <h2 className="text-2xl font-light mb-2">{selectedModel.name}</h2>
+            <p className="text-xs text-[#6e6a63] mb-4">{selectedModel.description}</p>
+            
+            <a 
+              href="#contacto" 
+              onClick={() => setSelectedModel(null)}
+              className="block w-full bg-[#171717] text-[#fcfbf8] py-3 text-[10px] tracking-[0.15em] uppercase text-center"
+            >
+              Consultar opción
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* --- MODAL DETALLE DE SERVICIO --- */}
+      {selectedService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-[#f7f5f0] border border-[#171717] max-w-xl w-full max-h-[90vh] p-6 relative shadow-2xl overflow-y-auto">
+            <button 
+              onClick={() => setSelectedService(null)}
+              className="absolute top-4 right-4 text-[#171717] hover:text-[#6e6a63] text-sm font-mono p-2 z-20 bg-[#eee9df] border border-[#171717]/20"
+            >
+              [✕]
+            </button>
+            <h2 className="text-2xl font-light mb-2">{selectedService.title}</h2>
+            <p className="text-xs text-[#6e6a63] mb-4">{selectedService.description}</p>
+            <a 
+              href="#contacto" 
+              onClick={() => setSelectedService(null)}
+              className="block w-full bg-[#171717] text-[#fcfbf8] py-3 text-[10px] tracking-[0.15em] uppercase text-center"
+            >
+              Cotizar Servicio
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* --- LIGHTBOX (Zoom de imágenes) --- */}
+      {zoomedImage && (
+        <div 
+          onClick={() => setZoomedImage(null)}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 cursor-zoom-out"
+        >
+          <img 
+            src={zoomedImage} 
+            alt="Vista ampliada" 
+            className="max-w-full max-h-[90vh] object-contain border border-[#f7f5f0]"
+          />
+        </div>
+      )}
     </div>
   );
 }

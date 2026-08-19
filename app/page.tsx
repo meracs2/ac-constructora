@@ -81,10 +81,17 @@ const modelsData: ModelDetail[] = [
       "Ampliaciones futuras disponibles",
       "Apto crédito y mudables"
     ],
-    image: "/contenedor-1.png",
+    // 📸 Foto principal del módulo
+    image: "/modular-1.jpeg",
+    // 🖼️ Galería ajustada del 1 al 7
     gallery: [
-      "/contenedor-1.png",
-      "/contenedor-2.png"
+      "/modular-1.jpeg",
+      "/modular-2.jpeg",
+      "/modular-3.jpeg",
+      "/modular-4.jpeg",
+      "/modular-5.jpeg",
+      "/modular-6.jpeg",
+      "/modular-7.jpeg"
     ]
   },
   {
